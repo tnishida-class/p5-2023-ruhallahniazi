@@ -18,7 +18,7 @@ function draw(){
   if(keyIsDown(RIGHT_ARROW)){ x += 5 * speed; }
   if(keyIsDown(UP_ARROW)){ y -= 5 * speed; }
   if(keyIsDown(DOWN_ARROW)){ y += 5 * speed; }
-  if(keyIsDown(SHIFT) && (keyIsDown(RIGHT_ARROW) || keyIsDown(LEFT_ARROW))){ speed = 2; }else{
+  if(keyIsDown(SHIFT) && (keyIsDown(RIGHT_ARROW) || keyIsDown(LEFT_ARROW))){ speed = 5; }else{
     speed = 1;
   }
   if(keyIsDown("A".charCodeAt(0))){ x+= 10; }

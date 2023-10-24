@@ -24,27 +24,57 @@ function setup(){
   largest = 0;
   for(let i = 0; i < scores.length; i++){
     // BLANK[2]　ヒント：今までの最大値 largest と scores[i] を比較する
+    if(scores[largest]<scores[i]){
+      largest = i;
+    }
   }
 
-  smallest = 100;
+  smallest = 0;
   for(let i = 0; i < scores.length; i++){
     // BLANK[3]　ヒント：最小値とだいたい同じ
+    if(scores[smallest]>scores[i]){
+      smallest = i;
+    }
   }
-
+  average = sum / 10;
   // ここから棒グラフを描いていきます。まずは背景に横線をn本引く
   const n = 10;
-  for(let i = 0; i < n; i++){ line(0, height * i / n, width, height * i / n); }
+  for(let i = 0; i < n; i++){
+     line(0, height * i / n, width, height * i / n); 
+  }
   
   noStroke();
-
+  let cord = [];
   for(let i = 0; i < scores.length; i++){
     const dx = width / scores.length;
     const h = height * scores[i] / 100;
     // BLANK[4] ヒント: 条件分岐を使って色を変更します
+    if(i == smallest){
+      fill("blue");
+    }
+    else if (i == largest){
+      fill("red");
+    }else{
+      fill("gray");
+    }
     rect(i * dx + 2, height - h, dx - 4, h);
-    fill(0);
+    fill("black");
+    ellipse(i * dx + 2 + (dx/2), height - h, 10, 10);
+    cord[i] = [i * dx + 2 + (dx/2), height - h]
     text(scores[i].toPrecision(3), i * dx, height - h);
   }
-
+  for(let i = 0;i<cord.length;i++){
+    if(i!=cord.length-1){
+      stroke("black");
+      line(cord[i][0], cord[i][1], cord[i+1][0], cord[i+1][1]);
+    }
+  }
+  stroke("blue");
+  fill("blue");
+  av = (average / 100) * height; 
+  line(0, height - av, width,height-av);
+  text(average.toPrecision(3), 0, height - av);
+  console.log("the average is " + av)
   // BLANK[5] 平均点の線を引きます
+
 }

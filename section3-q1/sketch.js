@@ -13,7 +13,7 @@ function setup(){
 function draw(){
   background(160, 192, 255);
   if (keyIsPressed === true) {
-    speed = 3;
+    speed = speed + 0.01;
   } else {
     speed = 1;
   }

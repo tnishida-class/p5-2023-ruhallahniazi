@@ -4,6 +4,7 @@ let speed = 1;
 let jump = false;
 let g = 50;
 let high_point = false;
+let xj = -3;
 function setup(){
   createCanvas(windowWidth, windowHeight);
   x = width / 2;
@@ -31,13 +32,14 @@ function draw(){
         high_point = false;
         jump = false;
         g = 50;
+        xj = xj * -1;
       }else{
-        x = x - 3;
+        x = x + xj;
         y = y + g 
         g = g + 2;
       }
     }else{
-      x = x - 3;
+      x = x + xj;
       y = y - g;
       g = g - 2;
       if(g == 0){

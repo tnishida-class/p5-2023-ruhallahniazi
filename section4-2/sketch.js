@@ -17,7 +17,7 @@ function draw(){
   if(mouseIsPressed != true){
     count = count + 1;
     if(count > 100){
-      for(let i = 0;i<2;i++){
+      for(let i = 0;i<10;i++){
         const b = { x: mouseX , y: mouseY, size: random(40, 70), vx: random(-2, 2), vy: random(-2, 2), mass:random(10, 20) };
         balls.push(b);
       }

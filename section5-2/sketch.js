@@ -7,7 +7,7 @@ function setup(){
   crossmark(10, 10, 90, 90);
   ngmark(150, 50, 80);
   star(250, 50, 40);
-  ngon(350,50,40,n8);
+  ngon(350,50,40,10);
 }
 
 function crossmark(x1, y1, x2, y2){

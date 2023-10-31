@@ -1,7 +1,7 @@
 // テキスト「関数を作る(2) 結果を戻す関数」～「総仕上げ：カレンダーを描画しよう」
 function setup(){
-  createCanvas(200, 200);
-  calendar(2019, 10);
+  createCanvas(400,400);
+  calendar(2023, 12);
   const d = new Date();
   let year = d.getFullYear();
  //console.log(dayOfWeek(1,1,1))
@@ -19,7 +19,28 @@ function setup(){
 
 function calendar(y, m){
   let dow = dayOfWeek(y, m, 1);
+  const daysOfWeekJapanese = [
+    '日', // Sunday (Nichiyoubi)
+    '月', // Monday (Getsuyoubi)
+    '火', // Tuesday (Kayoubi)
+    '水', // Wednesday (Suiyoubi)
+    '木', // Thursday (Mokuyoubi)
+    '金', // Friday (Kinyoubi)
+    '土'  // Saturday (Doyoubi)
+  ];
+  text(y+"/"+m,20,20);
+  let x = 20;
+  let Y = 50;
+  for (let d = 0;d <daysOfWeekJapanese.length; d++){
+    text(daysOfWeekJapanese[d],x + d * 30, Y);
+  }
+  Y = Y + 30;
   for(let d = 1; d <= daysInMonth(y, m); d++){
+    console.log(dayOfWeek(y, m, d));
+    text(d,x + calhelper(y,m,d) * 30,Y)
+    if(calhelper(y,m,d) == 6){
+      Y = Y + 30;
+    }
     // BLANK[3] (hint: まずは daysInYear, dayOfWeek を作ろう)
   }
 }
@@ -75,8 +96,27 @@ function dayOfWeek(y, m, d){
     "November",
     "December"
   ];
-  const da = new Date(months[m] + " "+ d + ", "+y+" 01:15:00");
+  const da = new Date(months[m-1] + " "+ d + ", "+y+" 01:15:00");
   return(weekday[da.getDay()]);
+}
+
+function calhelper(y, m, d){
+  const months = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December"
+  ];
+  const da = new Date(months[m-1] + " "+ d + ", "+y+" 01:15:00");
+  return(da.getDay());
 }
 
 function dayOfWeekAsString(dow){

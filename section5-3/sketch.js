@@ -2,7 +2,10 @@
 function setup(){
   createCanvas(200, 200);
   calendar(2019, 10);
-
+  const d = new Date();
+  let year = d.getFullYear();
+ //console.log(dayOfWeek(1,1,1))
+  console.log(dayOfWeek(d.getFullYear(),d.getMonth(), d.getDate()));
   // isLeapYear の動作確認のため console に出力しています
   for(let i = 2000; i <= 2100; i++){
     if(isLeapYear(i)){
@@ -25,7 +28,12 @@ function isLeapYear(y){
   return (y % 4 == 0) && (y % 100 != 0) || (y % 400 == 0);
 }
 
-function daysInYear(y){
+function daysInYear(year){
+  if(isLeapYear(year)){
+    return 366;
+  }else{
+    return 365;
+  }
   // BLANK[1]
 }
 
@@ -48,9 +56,27 @@ function dayOfYear(y, m, d){
   }
   return count + d;
 }
-
+function print (text){
+  console.log(text);
+}
 function dayOfWeek(y, m, d){
-  // BLANK[2]
+  const weekday = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+  const months = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December"
+  ];
+  const da = new Date(months[m] + " "+ d + ", "+y+" 01:15:00");
+  return(weekday[da.getDay()]);
 }
 
 function dayOfWeekAsString(dow){

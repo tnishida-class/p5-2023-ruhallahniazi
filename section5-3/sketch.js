@@ -18,19 +18,9 @@ function setup(){
 }
 
 function calendar(y, m){
-  let dow = dayOfWeek(y, m, 1);
-  const daysOfWeekJapanese = [
-    '日', // Sunday (Nichiyoubi)
-    '月', // Monday (Getsuyoubi)
-    '火', // Tuesday (Kayoubi)
-    '水', // Wednesday (Suiyoubi)
-    '木', // Thursday (Mokuyoubi)
-    '金', // Friday (Kinyoubi)
-    '土'  // Saturday (Doyoubi)
-  ];
+  const daysOfWeekJapanese = ['日', '月', '火', '水', '木', '金','土'];
   text(y+"/"+m,20,20);
-  let x = 20;
-  let Y = 50;
+  let x = 20,Y = 50;
   for (let d = 0;d <daysOfWeekJapanese.length; d++){
     text(daysOfWeekJapanese[d],x + d * 30, Y);
   }
@@ -40,10 +30,7 @@ function calendar(y, m){
     text(d,x + calhelper(y,m,d) * 30,Y)
     if(calhelper(y,m,d) == 6){
       Y = Y + 30;
-    }
-    // BLANK[3] (hint: まずは daysInYear, dayOfWeek を作ろう)
-  }
-}
+    }}}
 
 function isLeapYear(y){
   return (y % 4 == 0) && (y % 100 != 0) || (y % 400 == 0);

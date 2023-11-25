@@ -1,0 +1,26 @@
+.easy-button {
+    display: inline-block;
+    width: 300px;
+    padding: 10px 20px;
+    font-size: 26px;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    border: 1px solid #3498db;
+    color: #3498db;
+    border-radius: 5px;
+    transition: transform 0.2s ease-in-out;
+  }
+#back {
+  width: auto;
+}
+
+  .easy-button:hover {
+    background-color: #3498db;
+    color: #fff;
+  }
+
+  .easy-button:active {
+    transform: scale(0.95);
+  }
+  
